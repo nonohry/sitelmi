@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+<div>
+  <h1 class="title title-1">{{ page.title }}</h1>
+  <div>
+    {% if page.edits %}
+      {% for edit in page.edits %}
+        <span class="tag tag-rounded bg-secondary">Edited {{ edit }}</span>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <p>
+      {{ page.date | date: "%b %-d, %Y" }} • {% if page.author %}{{ page.author }}{% else %}Matt{% endif %} • 
+      {% capture words %}
+        {{ page.content | number_of_words | minus: 250 }}
+      {% endcapture %}
+      {% if words contains "-" %}
+        a quick read • {{ words | plus: 250 | append: " words" }}
+      {% else %}
+        ~ {{ words | plus: 250 | divided_by: 120 | append: " minute read" }} • {{ words | plus: 250 | append: " words" }}
+      {% endif %}
+    </p>
+</div>
+<hr />
+<div class="post-container">
+  {{ content }}
+</div>
+<hr />
+<div>
+  Thank you for reading <a href="{{page.url}}">{{ page.title }}</a>.
+  It was written on {{ page.date | date: "%b %-d, %Y" }} by {% if page.author %}{{ page.author }}{% else %}Matt{% endif %}. 
+  It was 
+  {% capture words %}
+    {{ page.content | number_of_words | minus: 250 }}
+  {% endcapture %}
+  {{ words | plus: 250 | append: " words long" }}, and should be a
+  {% if words contains "-" %}
+    quick read.
+  {% else %}
+    ~ {{ words | plus: 250 | divided_by: 120 | append: " minute read." }}
+  {% endif %}
+  {% if page.edits %}
+    {% for edit in page.edits %}
+      It was edited on {{ edit }}.
+    {% endfor %}
+  {% endif %}
+</div>

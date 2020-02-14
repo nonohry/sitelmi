@@ -1,0 +1,27 @@
+title: Nono Heryana
+email: nonoheryana@gmail.com
+description: "jkdskjf sdjnsdljfsdnsdl sdljksdnlssd sdlknsldkf sdljksdlkf sdlkdlks dflkvdlvkdfvklndflvkdn"
+# baseurl: ''
+url: https://nonohry.github.io/sitelmi
+
+twitter: ryujiazka
+github: nonohry
+logo: "/img/logo.png"
+
+markdown: kramdown
+kramdown:
+  parse_block_html: true
+exclude:
+  - vendor
+  - LICENSE.md
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - .travis.yml
+  - .gitignore
+  - .sass-cache
+  - .git
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+paginate: 10
